@@ -19,7 +19,7 @@ Python.
 Download the miner from the source code.
 
 ## Running the Miner
-Download the .py file,
+Download the .py file
 
 Then install requirements.txt:
 
