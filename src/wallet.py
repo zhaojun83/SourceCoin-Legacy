@@ -1,3 +1,7 @@
+#####################################
+#             IMPORTANT!            #
+# Don't use this file, it's useless #
+#####################################
 import ecdsa
 import hashlib
 import json
@@ -40,3 +44,4 @@ if __name__ == "__main__":
     print("Address:", wallet['address'])
     print("Private Key:", wallet['private_key'])
     print("Public Key:", wallet['public_key'])
+
