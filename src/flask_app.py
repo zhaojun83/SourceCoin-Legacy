@@ -332,6 +332,8 @@ def home():
     return 'Blockchain Running.'
 
 if __name__ == '__main__':
+    blockchain = Blockchain()
     load_blockchain_state()
+    atexit.register(save_blockchain_state)
     app.run(port=5000)
 
