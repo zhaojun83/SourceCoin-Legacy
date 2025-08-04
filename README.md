@@ -24,9 +24,8 @@ Download the .py file and run it in python. It's that easy!
 # Security and Fairness
 The server handles all timing and reward logic to prevent cheating.
 
-The server code is open-source for transparency (link to code).
+The server code is open-source for transparency.
 
-Users trust the server to enforce fair rewards.
 
 # Contribution
 Please make sure to include comments where nessesary.
