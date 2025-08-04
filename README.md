@@ -1,0 +1,32 @@
+# SourceCoin
+## Overview
+
+A simplified blockchain where a server runs a hidden countdown timer and rewards all active miners with 50 coins when it ends.
+
+## How It Works
+The server runs on [sourceguy.pythonanywhere.com] and manages the countdown timer (random between 200–600 seconds).
+
+Miners connect to the server and continuously participate by running the miner software.
+
+When the countdown reaches zero, the server automatically rewards all currently active miners with 50 coins each.
+
+The countdown timer is hidden from miners to prevent abuse.
+
+# Getting Started
+## Prerequisites
+Python.
+
+Download the miner from the source code.
+
+## Running the Miner
+Download the .py file and run it in python. It's that easy!
+
+# Security and Fairness
+The server handles all timing and reward logic to prevent cheating.
+
+The server code is open-source for transparency (link to code).
+
+Users trust the server to enforce fair rewards.
+
+# Contribution
+Please make sure to include comments where nessesary.
