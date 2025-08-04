@@ -283,13 +283,15 @@ def replace_chain():
             'chain': blockchain.chain
         }), 200
     
-@app.route('/timer2', methods=["GET"])
-def timer2():
-    time.sleep(1)
-    timer = DAY - 1
-    return jsonify({
-        'message': {timer}
-    }), 200
+# @app.route('/timer2', methods=["GET"])
+# def timer2():
+#     try:
+#         timer = DAY - 1  # Make sure DAY is an integer
+#         return jsonify({
+#             'message': timer
+#         }), 200
+#     except Exception as e:
+#         return jsonify({'error': str(e)}), 500
 
 @app.route('/send', methods=['POST'])
 def send_transaction():

@@ -1,3 +1,5 @@
+### ! Doesnt work yet ! ###
+
 import os
 from imports.consts import WALLET_FILE, API_URL
 from getpass import getpass
@@ -26,14 +28,18 @@ def load_wallet():
     print("Too many failed attempts.")
     exit(1)
 
-def timer():
-    if os.name == "nt":
-        os.system("CLS") # Works on windows
-    else:
-        os.system("clear")
-    response = requests.get(f"{API_URL}/timer2")
-    print(response)
+# def timer():
+#     response = requests.get(f"{API_URL}/timer2")
+#     # print(response)
+#     for key in response.json():
+#         while response.json()[key] != 0:
+#             print(response.json()[key])
+#             if os.name == "nt":
+#                 os.system("CLS") # Works on windows
+#             else:
+#                 os.system("clear")
 
-if __name__ == "__main__":
-    load_wallet()
-    timer()
+
+# if __name__ == "__main__":
+#     load_wallet()
+#     timer()
