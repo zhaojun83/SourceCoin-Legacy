@@ -5,7 +5,6 @@
 import ecdsa
 import hashlib
 import json
-import binascii
 
 # Generate a new wallet
 def create_wallet():

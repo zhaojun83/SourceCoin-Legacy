@@ -1,7 +1,6 @@
 import hashlib
 import json
 import time
-import ecdsa
 from flask import Flask, jsonify, request
 from uuid import uuid4
 import requests
@@ -9,9 +8,7 @@ from urllib.parse import urlparse
 import random
 import atexit
 import os
-
-CHAIN_FILE = "chain.json"
-TX_FILE = "pending.json"
+from imports.consts import DAY, CHAIN_FILE, TX_FILE
 
 def save_blockchain_state():
     with open(CHAIN_FILE, "w") as f:
@@ -285,6 +282,14 @@ def replace_chain():
             'message': 'Current chain is already the longest',
             'chain': blockchain.chain
         }), 200
+    
+@app.route('/timer2', methods=["GET"])
+def timer2():
+    time.sleep(1)
+    timer = DAY - 1
+    return jsonify({
+        'message': {timer}
+    }), 200
 
 @app.route('/send', methods=['POST'])
 def send_transaction():

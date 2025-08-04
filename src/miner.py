@@ -8,10 +8,8 @@ from cryptography.fernet import Fernet, InvalidToken
 from getpass import getpass
 import base64
 import hashlib
+from imports.consts import WALLET_FILE, API_URL
 
-
-API_URL = 'https://sourceguy.pythonanywhere.com' # Change if you change the server's location
-WALLET_FILE = 'wallet.json'
 
 def derive_key(password: str) -> bytes:
     return base64.urlsafe_b64encode(hashlib.sha256(password.encode()).digest())
@@ -126,11 +124,13 @@ def start_mining(address):
         except Exception as e:
             print('Error during mining:', e)
 
-def send_transaction(sender, public_key_pem, private_key_pem):
+def send_transaction(sender, public_key_pem, private_key_pem, Tfee=80):
     receiver = input("Receiver's wallet address: ").strip()
     try:
         amount = float(input("Amount to send: "))
-        fee = float(input("Transaction fee (suggest 0.1 - 1.0): "))
+        fee = Tfee
+        print(f"The fee will be {fee}")
+        input()
     except ValueError:
         print("Invalid number.")
         return

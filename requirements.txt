@@ -4,3 +4,8 @@ cryptography
 hashlib
 os
 getpass
+base64
+random
+atexit
+os
+ecdsa
