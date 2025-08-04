@@ -10,7 +10,7 @@ import base64
 import hashlib
 
 
-API_URL = 'https://sourceguy.pythonanywhere.com' # Change if your node runs elsewhere
+API_URL = 'https://sourceguy.pythonanywhere.com' # Change if you change the server's location
 WALLET_FILE = 'wallet.json'
 
 def derive_key(password: str) -> bytes:
@@ -201,5 +201,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
