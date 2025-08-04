@@ -26,6 +26,13 @@ The server handles all timing and reward logic to prevent cheating.
 
 The server code is open-source for transparency.
 
+# API
+
+### See balance
+`GET https://sourceguy.pythonanywhere.com/balance/{User's Address}`
+
+### There are other API endpoints that i'm working on making public.
+
 
 # Contribution
 Please make sure to include comments where nessesary.
