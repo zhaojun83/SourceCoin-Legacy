@@ -19,11 +19,13 @@ Python.
 Download the miner from the source code.
 
 ## Running the Miner
-Download the .py file and run it in python.
+Download the .py file,
 
 Then install requirements.txt:
 
 `pip install -r requirements.txt`
+
+Finally take the .py and run it in python.
 
 # Security and Fairness
 The server handles all timing and reward logic to prevent cheating.
