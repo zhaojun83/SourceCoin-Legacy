@@ -20,7 +20,8 @@ Download the miner from the source code.
 
 ## Running the Miner
 Download the .py file and run it in python.
-Then install requirements.txt
+
+Then install requirements.txt:
 
 `pip install -r requirements.txt`
 
