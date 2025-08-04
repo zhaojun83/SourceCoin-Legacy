@@ -47,12 +47,20 @@ def generate_wallet():
         encoding=serialization.Encoding.PEM,
         format=serialization.PublicFormat.SubjectPublicKeyInfo)
 
+    # Compute address from public key
+    address = hashlib.sha256(pub_bytes).hexdigest()
+
     encrypted_priv = encrypt_private_key(priv_bytes.decode(), password)
 
     wallet = {
+        'address': address,
         'private_key': encrypted_priv,
         'public_key': pub_bytes.decode()
     }
+
+    with open(WALLET_FILE, 'w') as f:
+        json.dump(wallet, f)
+    print(f'New wallet created. Your address: {address}')
 
     with open(WALLET_FILE, 'w') as f:
         json.dump(wallet, f)
@@ -71,7 +79,7 @@ def load_wallet():
         password = getpass("Enter your wallet password: ")
         try:
             decrypted_priv = decrypt_private_key(wallet['private_key'], password)
-            wallet['private_key'] = decrypted_priv  # replace encrypted with decrypted
+            wallet['private_key'] = decrypted_priv
             return wallet
         except InvalidToken:
             print("Wrong password.")
@@ -86,7 +94,7 @@ def get_address(pub_key_pem):
 
 def get_balance(address):
     try:
-        r = requests.get(f'{API_URL}/get_balance', params={'address': address})
+        r = requests.get(f'{API_URL}/balance/{address}')
         if r.status_code == 200:
             return r.json().get('balance', 0)
         # else:
