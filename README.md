@@ -42,3 +42,6 @@ The server code is open-source for transparency.
 
 # Contribution
 Please make sure to include comments where nessesary.
+
+# Disclaimer
+this project isnt a real currency, its for educational purposes only!
