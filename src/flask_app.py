@@ -38,6 +38,16 @@ class Blockchain:
         parsed = urlparse(address)
         self.nodes.add(parsed.netloc)
 
+    def get_difficulty(self, block_index):
+        """Dynamic difficulty adjustment - increases over time"""
+        base_difficulty = 5  # Start with 5 leading zeros instead of 4
+        
+        # Increase difficulty every 50 blocks
+        difficulty_adjustment = block_index // 50
+        
+        # Maximum difficulty of 8 leading zeros
+        return min(base_difficulty + difficulty_adjustment, 8)
+
     def is_chain_valid(self, chain):
         previous_block = chain[0]
         for i in range(1, len(chain)):
@@ -47,7 +57,12 @@ class Blockchain:
             previous_proof = previous_block['proof']
             proof = block['proof']
             hash_val = hashlib.sha256(str(proof**2 - previous_proof**2).encode()).hexdigest()
-            if hash_val[:4] != '0000':
+            
+            # Use dynamic difficulty based on block index
+            required_difficulty = self.get_difficulty(block['index'])
+            required_zeros = '0' * required_difficulty
+            
+            if hash_val[:required_difficulty] != required_zeros:
                 return False
             previous_block = block
         return True
@@ -102,9 +117,13 @@ class Blockchain:
 
     def proof_of_work(self, previous_proof):
         new_proof = 1
+        block_index = len(self.chain) + 1  # Next block index
+        difficulty = self.get_difficulty(block_index)
+        required_zeros = '0' * difficulty
+        
         while True:
             hash_val = hashlib.sha256(str(new_proof**2 - previous_proof**2).encode()).hexdigest()
-            if hash_val[:4] == '0000':
+            if hash_val[:difficulty] == required_zeros:
                 return new_proof
             new_proof += 1
 
@@ -169,7 +188,7 @@ app = Flask(__name__)
 node_address = str(uuid4()).replace('-', '')
 blockchain = Blockchain()
 
-BLOCK_TIME_SECONDS = random.randint(299, 600)
+BLOCK_TIME_SECONDS = random.randint(600, 1200)  # Increased from 299-600 to 600-1200 seconds (10-20 minutes)
 HALVING_INTERVAL = 10     # Halve reward every 10 blocks (for demo)
 
 @app.route('/mine', methods=['GET'])
