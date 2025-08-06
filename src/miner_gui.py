@@ -17,7 +17,7 @@ from imports.consts import WALLET_FILE, API_URL
 class SourceCoinGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("SourceCoin Miner & Wallet")
+        self.root.title("SourceCoin Legacy Miner & Wallet")
         self.root.geometry("800x600")
         self.root.configure(bg='#1e1e1e')
         
