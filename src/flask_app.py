@@ -103,9 +103,13 @@ class Blockchain:
             sender = tx['sender']
             receiver = tx['receiver']
             amount = tx['amount']
+            fee = tx.get('fee', 0)
 
             if sender != "Network":
-                self.balances[sender] = self.balances.get(sender, 0) - amount
+                # Deduct amount + fee from sender
+                self.balances[sender] = self.balances.get(sender, 0) - amount - fee
+            
+            # Add amount to receiver
             self.balances[receiver] = self.balances.get(receiver, 0) + amount
 
         self.pending_transactions = []
@@ -234,13 +238,13 @@ def mine_block():
     blockchain.pending_transactions.append(reward_tx)
 
     block = blockchain.create_block(proof, prev_hash)
+    save_blockchain_state()
 
     return jsonify({
         'message': 'Block mined!',
         'reward': total_reward,
         'block': block
     }), 200
-    save_blockchain_state()
 
 @app.route('/add_transaction', methods=['POST'])
 def add_transaction():
@@ -347,8 +351,8 @@ def broadcast_block():
     prev_block = blockchain.get_previous_block()
     if block['previous_hash'] == blockchain.hash(prev_block):
         blockchain.chain.append(block)
-        return jsonify({'message': 'Block added'}), 200
         save_blockchain_state()
+        return jsonify({'message': 'Block added'}), 200
     else:
         return jsonify({'message': 'Invalid block, ignored'}), 400
 
@@ -358,7 +362,6 @@ def home():
     return 'Blockchain Running.'
 
 if __name__ == '__main__':
-    blockchain = Blockchain()
     load_blockchain_state()
     atexit.register(save_blockchain_state)
     app.run(port=5000)
