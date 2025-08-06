@@ -1,4 +1,4 @@
-# SourceCoin
+# SourceCoin Legacy (SRCL)
 ## Overview
 
 A simplified blockchain where a server runs a hidden countdown timer and rewards all active miners with 50 coins when it ends.
