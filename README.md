@@ -1,4 +1,5 @@
 # SourceCoin-Legacy: Simple Python Crypto Wallet and API Toolkit
+
 [![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/downloads/)
 [![License: Educational](https://img.shields.io/badge/license-educational-lightgrey)](#license-and-attribution)
 
